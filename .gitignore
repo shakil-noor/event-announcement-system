@@ -1,0 +1,44 @@
+# ==========================================
+# Terraform Local Files & State
+# ==========================================
+# Local .terraform directories created by terraform init
+.terraform/
+.terraform.lock.hcl
+
+# Terraform state files (CRITICAL: Contains secrets & infrastructure data)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Crash logs & variables files containing secret values
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ==========================================
+# Lambda & Node.js Dependencies / Build Artifacts
+# ==========================================
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Zip files generated for Lambda deployment packages
+*.zip
+subscribe.zip
+create_event.zip
+
+# Environment variable files (local development secrets)
+.env
+.env.local
+.env.*.local
+
+# ==========================================
+# Deployment Script Temporary Files
+# ==========================================
+# Backup files created by sed execution in deploy.sh
+*.bak

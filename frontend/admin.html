@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Publish Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 20px;
+            background: #2c3e50;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #c0392b;
+        }
+
+        #status-message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-link">&larr; Back to Public Site</a>
+
+    <div class="card">
+        <h1>Admin Event Publisher</h1>
+        <p style="color: #666; font-size: 14px;">Create and broadcast an event notification to all active subscribers.
+        </p>
+
+        <label for="event-title">Event Title</label>
+        <input type="text" id="event-title" placeholder="e.g., Q3 Product Launch">
+
+        <label for="event-desc">Event Description</label>
+        <textarea id="event-desc" rows="5" placeholder="Enter event details and updates..."></textarea>
+
+        <button onclick="handlePublish()">Publish & Broadcast Event</button>
+
+        <div id="status-message"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

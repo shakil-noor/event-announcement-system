@@ -1,10 +1,10 @@
-# Serverless Event Announcement & Broadcast System
+# Serverless Event Announcement & Broadcast System (AWS using Terraform)
 
 A production-grade, fully serverless event announcement and subscription platform built on AWS using **Terraform (Infrastructure as Code)**. This project adheres to modern AWS security standards, featuring zero public S3 exposure via CloudFront Origin Access Control (OAC), least-privilege IAM policies, and on-demand serverless scaling.
 
 ---
 
-## 🏗️  Request Flow Visual
+## 🏗️ Request Flow
 
 The architecture is entirely serverless, ensuring zero idle server management costs and automatic scalability.
 
@@ -18,11 +18,12 @@ The architecture is entirely serverless, ensuring zero idle server management co
  [Amazon API Gateway HTTP API v2]
        ├──► POST /subscribe ──► [AWS Lambda: subscribe] ──► [DynamoDB: subscribers] & [Amazon SNS]
        └──► POST /events    ──► [AWS Lambda: create_event] ──► [DynamoDB: event-history] & [Amazon SNS Email Broadcast]
-
 ```
+
 ## 🧭 Architecture Diagram
 
 ![Architecture Diagram](assets/serverless_event_announcement_system_architecture.jpg)
+
 
 ### Complete Request Flow
 
@@ -51,7 +52,7 @@ The architecture is entirely serverless, ensuring zero idle server management co
 
 ---
 
-## 📁 Project Structure
+## 📁 Folder Structure
 
 ```text
 event-announcement-system/
@@ -103,29 +104,84 @@ event-announcement-system/
 3. **Node.js** (v18.x+) installed for Lambda runtime dependencies.
 4. A Unix-like shell environment (Linux, macOS, or Git Bash on Windows) to run the deployment script.
 
-### Automated Deployment
+To clone, set up, and run this project locally, follow these straightforward steps:
 
-The repository includes an automated `deploy.sh` script that provisions the infrastructure, automatically injects the generated API Gateway URL into the frontend JavaScript, syncs static assets to S3, and invalidates the CloudFront cache.
+### 1. Clone the Repository
 
-1. Clone the repository and navigate to the root directory:
+Open your terminal and clone your repository to your local machine, then navigate into the project directory:
+
 ```bash
+git clone https://github.com/shakil-noor/event-announcement-system.git
 cd event-announcement-system
 
 ```
 
+### 2. Configure AWS Credentials
 
-2. Make the deployment script executable:
+Ensure your local environment has permissions to deploy resources to your AWS account by configuring your AWS CLI credentials:
+
 ```bash
-chmod +x deploy.sh
+aws configure
+
+```
+
+*(Enter your AWS Access Key ID, Secret Access Key, region—e.g., `us-east-1`—and preferred output format).*
+
+### 3. Deploy the Terraform Infrastructure
+
+If you prefer to provision the infrastructure step-by-step manually:
+
+1. Navigate to the Terraform directory:
+```bash
+cd terraform
 
 ```
 
 
-3. Run the deployment script:
+2. **Initialize Terraform:**
+Initialize the working directory and download the required AWS provider plugins.
 ```bash
+terraform init
+
+```
+
+
+3. **Preview the Infrastructure:**
+Generate and review the execution plan to see what resources will be created.
+```bash
+terraform plan
+
+```
+
+
+4. **Apply the Configuration:**
+Provision the AWS infrastructure (S3, CloudFront, API Gateway, Lambda, DynamoDB, SNS).
+```bash
+terraform apply
+
+```
+
+
+*(Type `yes` when prompted to confirm deployment.)*
+
+---
+
+### 4. Upload the file to S3 and Invalidate CloudFront cache (Recommended)
+
+Make the deployment script executable and run it:
+```bash
+chmod +x deploy.sh
 ./deploy.sh
 
 ```
 
 
-4. Once complete, copy the **CloudFront Domain name** from the Terraform outputs and open it in your browser to view your live system!
+*(This script injecting the API Gateway URL into your frontend, syncing static assets to S3, and invalidating the CloudFront cache).*
+
+
+
+*(Type `yes` when prompted to confirm).*
+
+### 5. Access the Live System
+
+Once the deployment finishes successfully, copy the **CloudFront Domain Name** outputted by Terraform and open it in your web browser to test your live serverless event announcement platform!

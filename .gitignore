@@ -42,3 +42,22 @@ create_event.zip
 # ==========================================
 # Backup files created by sed execution in deploy.sh
 *.bak
+
+# ==========================================
+# System & IDE Files
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code / JetBrains / Editors
+.vscode/
+.idea/
+*.swp
+*.swo

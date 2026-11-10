@@ -4,7 +4,7 @@ A production-grade, fully serverless event announcement and subscription platfor
 
 ---
 
-## 🏗️ Architecture & Request Flow
+## 🏗️  Request Flow Visual
 
 The architecture is entirely serverless, ensuring zero idle server management costs and automatic scalability.
 
@@ -20,6 +20,9 @@ The architecture is entirely serverless, ensuring zero idle server management co
        └──► POST /events    ──► [AWS Lambda: create_event] ──► [DynamoDB: event-history] & [Amazon SNS Email Broadcast]
 
 ```
+## 🧭 Architecture Diagram
+
+![Architecture Diagram](assets/serverless_event_announcement_system_architecture.jpg)
 
 ### Complete Request Flow
 
